@@ -24,11 +24,7 @@ Vue.use(VueRouter)
 
 // 1. Define route components.
 // These can be imported from other files
-const Foo = { template: '<div>foo</div>' }
-const Bar = { template: '<div>bar</div>' }
-import HelloWorld from './components/HelloWorld'
-import YACAChatbox from './components/YACAChatbox.vue'
-import Onboarding from './views/Onboarding.vue'
+import Pedro from './views/Pedro.vue'
 
 // 2. Define some routes
 // Each route should map to a component. The "component" can
@@ -36,11 +32,8 @@ import Onboarding from './views/Onboarding.vue'
 // `Vue.extend()`, or just a component options object.
 // We'll talk about nested routes later.
 const routes = [
-  { path: '/foo', component: Foo },
-  { path: '/bar', component: Bar },
-  { path: '/helloworld', component: HelloWorld},
-  { path: '/YACAChatbox', component: YACAChatbox},
-  { path: '/onboarding', component: Onboarding},
+  { path: '*', redirect: '/' },
+  { path: '/', component: Pedro },
 ]
 
 // 3. Create the router instance and pass the `routes` option
