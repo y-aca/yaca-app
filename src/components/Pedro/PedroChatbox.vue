@@ -2,41 +2,38 @@
 
 <template>
     <v-card>
-        <v-container grid-list-md text-xs-center>
-          <div id="vueapp" class="vue-app">
-            <template>
-              <v-timeline>
-                <v-timeline-item
-                    :key="message"
-                    v-for="message in messages"
-                    large
-                >
-                  <template v-slot:icon>
-                  </template>
-                  <template v-slot:opposite>
-                    <span>{{ message.author }}</span>
-                  </template>
-                  <v-card class="elevation-2">
-                    <v-card-text>{{ message.text }}</v-card-text>
-                  </v-card>
-                </v-timeline-item>
-              </v-timeline>
-            </template>
-
-            <template>
-              <v-container>
-                <v-layout>
-                  <v-text-field
+        <v-layout column fill-height justify-end>
+          <v-flex xs11>
+            <v-timeline>
+              <v-timeline-item
+                  :key="message"
+                  v-for="message in messages"
+                  large
+              >
+                <template v-slot:icon>
+                </template>
+                <template v-slot:opposite>
+                  <span>{{ message.author }}</span>
+                </template>
+                <v-card class="elevation-2">
+                  <v-card-text>{{ message.text }}</v-card-text>
+                </v-card>
+              </v-timeline-item>
+            </v-timeline>
+          </v-flex>
+          <v-flex xs1>
+            <v-container>
+              <v-layout>
+                <v-text-field
                   v-model="message"
                   label="Your message"
                   required
                   v-on:keyup.enter="onPost"
-                  ></v-text-field>
-                </v-layout>
-              </v-container>
-            </template>
-          </div>
-        </v-container>
+                ></v-text-field>
+              </v-layout>
+            </v-container>
+          </v-flex>
+      </v-layout>
     </v-card>
 </template>
 
@@ -96,3 +93,13 @@ export default {
 }
 
 </script>
+
+<style scoped>
+.red {
+  background-color: red;
+}
+
+.hauteur {
+  height: 100%;
+}
+</style>
