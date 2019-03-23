@@ -24,6 +24,7 @@
         <router-link to="/foo">Go to Foo</router-link>
         <router-link to="/bar">Go to Bar</router-link>
         <router-link to="/helloworld">Go to Hello</router-link>
+        <router-link to="/YACAChatbox">Go to chatbox</router-link>
       </p>
       <!-- route outlet -->
     </v-content>

@@ -1,7 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import './plugins/vuetify'
-import App from './App.vue'
+
+
+//Chat import
+import '@progress/kendo-ui'
+import '@progress/kendo-theme-default/dist/all.css'
+
+import { Chat, ChatInstaller } from '@progress/kendo-chat-vue-wrapper'
+
+Vue.use(ChatInstaller)
+//End chat import
+
+
+import { DirectLine } from 'botframework-directlinejs';
 
 Vue.config.productionTip = false
 
@@ -14,6 +26,7 @@ Vue.use(VueRouter)
 const Foo = { template: '<div>foo</div>' }
 const Bar = { template: '<div>bar</div>' }
 import HelloWorld from './components/HelloWorld'
+import YACAChatbox from './components/YACAChatbox.vue'
 
 // 2. Define some routes
 // Each route should map to a component. The "component" can
@@ -23,7 +36,8 @@ import HelloWorld from './components/HelloWorld'
 const routes = [
   { path: '/foo', component: Foo },
   { path: '/bar', component: Bar },
-  { path: '/helloworld', component: HelloWorld}
+  { path: '/helloworld', component: HelloWorld},
+  { path: '/YACAChatbox', component: YACAChatbox}
 ]
 
 // 3. Create the router instance and pass the `routes` option
@@ -40,4 +54,3 @@ new Vue({
   render: h => h(App),
   router
 }).$mount('#app')
-
