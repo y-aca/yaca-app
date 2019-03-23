@@ -6,25 +6,25 @@
             :size="50"
             color="grey lighten-4"
           >
-            <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="avatar">
+            <img :src="`${publicPath}JESSY.png`" alt="avatar">
           </v-avatar>
           <v-avatar
             :size="50"
             color="grey lighten-4"
           >
-            <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="avatar">
+            <img :src="`${publicPath}MITSU.png`" alt="avatar">
           </v-avatar>
           <v-avatar
             :size="50"
             color="grey lighten-4"
           >
-            <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="avatar">
+            <img :src="`${publicPath}PEDRO.png`" alt="avatar">
           </v-avatar>
           <v-avatar
             :size="50"
             color="grey lighten-4"
           >
-            <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="avatar">
+            <img :src="`${publicPath}PACITO.png`" alt="avatar">
           </v-avatar>
         <v-spacer></v-spacer>
     </v-toolbar>
@@ -40,7 +40,7 @@ export default {
   },
   data () {
     return {
-      //
+      publicPath: process.env.BASE_URL,
     }
   },
   computed: {

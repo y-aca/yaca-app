@@ -1,8 +1,9 @@
 <template>
     <v-card>
         <v-img
-            src="https://c7.alamy.com/compfr/a5twen/les-juges-painet1544-guatemala-homme-plus-age-homme-san-pedro-sacatepequez-amerique-latine-amerique-centrale-pays-sourire-chapeau-famille-face-a5twen.jpg"
-            aspect-ratio="2.75"
+            :src="`${publicPath}PACITO.png`"
+            aspect-ratio="0.3"
+            max-height="500px"
         ></v-img>
 
         <v-card-title primary-title>
@@ -17,7 +18,9 @@
 <script>
 export default {
     data: () => {
-        return {}
+        return {
+            publicPath: process.env.BASE_URL,
+        }
     }
 }
 </script>
