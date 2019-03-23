@@ -72,7 +72,7 @@ var chat = $("#chat").kendoChat({
   }
 }).data("kendoChat");
 */
-
+ /*
   window.DirectLineAgent = kendo.Class.extend({
     init: function (chat, secret) {
       this.chat = chat;
@@ -122,4 +122,5 @@ var chat = $("#chat").kendoChat({
       this.chat.renderSuggestedActions(actions);
     }
   });
+  */
 </script>

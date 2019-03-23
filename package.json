@@ -8,6 +8,10 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@progress/kendo-chat-vue-wrapper": "^2019.1.220",
+    "@progress/kendo-theme-default": "^3.4.0",
+    "@progress/kendo-ui": "^2019.1.320",
+    "botframework-directlinejs": "^0.11.4",
     "vue": "^2.6.6",
     "vue-router": "^3.0.2",
     "vuetify": "^1.5.5"
