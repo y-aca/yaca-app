@@ -1,22 +1,22 @@
 <template>
-  <v-container fluid>
-    <v-layout row class="firstrow" px2>
-      <v-flex xs6 mr2>
-        <PedroPersona>
-        </PedroPersona>
+  <v-container grid-list-md fluid>
+    <v-layout column fill-height>
+      <v-flex xs8>
+        <v-layout row class="firstrow" px2>
+          <v-flex xs6 mr2>
+            <PedroPersona class="hauteur">
+            </PedroPersona>
+          </v-flex>
+          <v-flex xs6>
+            <PedroChatbox class="hauteur">
+            </PedroChatbox>
+          </v-flex>
+        </v-layout>
       </v-flex>
-      <v-flex xs6>
-        <PedroChatbox>
-        </PedroChatbox>
-      </v-flex>
-    </v-layout>
-    <v-layout row>
-      <v-flex xs12>
-        <v-container fluid>
-          <v-card>
-            XXX
+      <v-flex xs4>
+          <v-card class="hauteur">
+            XXXSSS
           </v-card>
-        </v-container>
       </v-flex>
     </v-layout>
   </v-container>
@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style scoped>
-.firstrow {
-  height: 600px;
+.hauteur {
+  height: 100%;
 }
 </style>

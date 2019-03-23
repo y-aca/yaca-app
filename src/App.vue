@@ -8,18 +8,21 @@
           >
             <img :src="`${publicPath}JESSY.png`" alt="avatar">
           </v-avatar>
+        <v-spacer></v-spacer>
           <v-avatar
             :size="50"
             color="grey lighten-4"
           >
             <img :src="`${publicPath}MITSU.png`" alt="avatar">
           </v-avatar>
+        <v-spacer></v-spacer>
           <v-avatar
             :size="50"
             color="grey lighten-4"
           >
             <img :src="`${publicPath}PEDRO.png`" alt="avatar">
           </v-avatar>
+        <v-spacer></v-spacer>
           <v-avatar
             :size="50"
             color="grey lighten-4"
