@@ -7,7 +7,7 @@ import './plugins/vuetify'
 import '@progress/kendo-ui'
 import '@progress/kendo-theme-default/dist/all.css'
 
-import { Chat, ChatInstaller } from '@progress/kendo-chat-vue-wrapper'
+import { ChatInstaller } from '@progress/kendo-chat-vue-wrapper'
 
 import App from './App.vue'
 
@@ -28,6 +28,7 @@ const Foo = { template: '<div>foo</div>' }
 const Bar = { template: '<div>bar</div>' }
 import HelloWorld from './components/HelloWorld'
 import YACAChatbox from './components/YACAChatbox.vue'
+import Onboarding from './views/Onboarding.vue'
 
 // 2. Define some routes
 // Each route should map to a component. The "component" can
@@ -38,7 +39,8 @@ const routes = [
   { path: '/foo', component: Foo },
   { path: '/bar', component: Bar },
   { path: '/helloworld', component: HelloWorld},
-  { path: '/YACAChatbox', component: YACAChatbox}
+  { path: '/YACAChatbox', component: YACAChatbox},
+  { path: '/onboarding', component: Onboarding},
 ]
 
 // 3. Create the router instance and pass the `routes` option
