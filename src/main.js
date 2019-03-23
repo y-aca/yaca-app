@@ -3,17 +3,8 @@ import VueRouter from 'vue-router'
 import './plugins/vuetify'
 
 
-//Chat import
-import '@progress/kendo-ui'
-import '@progress/kendo-theme-default/dist/all.css'
-
-import { ChatInstaller } from '@progress/kendo-chat-vue-wrapper'
 
 import App from './App.vue'
-
-Vue.use(ChatInstaller)
-//End chat import
-
 
 
 Vue.config.productionTip = false

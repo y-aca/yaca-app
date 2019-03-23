@@ -14,18 +14,51 @@
       </v-btn>
     </v-toolbar>
 
-    <br /><br /><br />
-
-
-    <div id="vueapp" class="vue-app">
-        <kendo-chat ref="chat"
-                    v-on:post="post"
-                    v-on:sendmessage="sendMessage"
-                    v-on:actionclick="actionClick"
-                    v-on:typingstart="typingstart"
-                    v-on:typingend="typingend"></kendo-chat>
-    </div>
-
+    <v-container grid-list-md text-xs-center>
+        <div id="vueapp" class="vue-app">
+        <template>
+          <v-timeline>
+            <v-timeline-item
+              v-for="message in messages"
+              large
+            >
+              <template v-slot:icon>
+              </template>
+              <template v-slot:opposite>
+                <span>{{ message.author }}</span>
+              </template>
+              <v-card class="elevation-2">
+                <v-card-text>{{ message.text }}</v-card-text>
+              </v-card>
+            </v-timeline-item>
+          </v-timeline>
+        </template>
+        <!--
+          <li v-for="message in messages">
+            <div>
+              <div class="message-bubble">
+                <div class="username">{{ message.author }} : </div>
+                <div class="content">{{ message.text }}</div>
+              </div>
+            </div>
+          </li>
+        </ul>
+          <input type="text" v-model="message" v-on:keyup.enter="onPost">
+        -->
+        <template>
+          <v-container>
+            <v-layout>
+              <v-text-field
+                v-model="message"
+                label="Your message"
+                required
+                v-on:keyup.enter="onPost"
+              ></v-text-field>
+          </v-layout>
+        </v-container>
+      </template>
+      </div>
+    </v-container>
   </v-app>
 </template>
 
@@ -33,95 +66,54 @@
 
 import { DirectLine } from 'botframework-directlinejs';
 
-var secretKey = "lMy3tOEaOhM.nJa2Hu5KyEwsXiN2o9arp0GUrfPieAsWGzuSMKZUajk"
-var directLine = new DirectLine({
-    secret: secretKey
-});
+var secret = "lMy3tOEaOhM.nJa2Hu5KyEwsXiN2o9arp0GUrfPieAsWGzuSMKZUajk"
 
 
 export default {
   data () {
     return {
-      //
-      post: onPost,
-      sendMessage: onSendMessage,
-      actionClick: onActionClick,
-      typingstart: onTypingStart,
-      typingend: onTypingEnd
+      agent: null,
+      message: null,
+      messages: [],
+      addMessage: function(author, text) {
+        var lastIndex = this.messages.length - 1;
+        var lastMessage = this.messages[lastIndex];
+        if(lastIndex >= 0 && lastMessage.author == author) {
+            lastMessage.text += " " + text;
+        } else {
+            this.messages.push({author: author, text: text})
+        }
+      }
     }
-  }
-}
-function onPost(ev) {
-    console.log("A message has been posted to the Chat widget!");
-}
-function onSendMessage(ev) {
-    console.log("onSendMessage!");
-}
-function onActionClick(ev) {
-    console.log("onACtionClick!");
-}
-function onTypingStart(ev) {
-    console.log("onTypingStart!");
-}
-function onTypingEnd(ev) {
-    console.log("onTypingEnd!");
-}
-/*
-var chat = $("#chat").kendoChat({
-  post: function (args) {
-    agent.postMessage(args);
-  }
-}).data("kendoChat");
-*/
- /*
-  window.DirectLineAgent = kendo.Class.extend({
-    init: function (chat, secret) {
-      this.chat = chat;
-      this.iconUrl = "https://demos.telerik.com/kendo-ui/content/chat/avatar.png";
+  },
 
-      // Assign here the Bot framework agent
-      // The below example uses the Microsoft's Bot Framework
-      this.agent = new DirectLine.DirectLine({ secret: secret });
-
-      // The below code would depend on the Bot framework of choice
-      // In this case, the agent is subscribed to listen for any activity of the service
-      // Its onResponse method would be executed on any activity detected
-      this.agent.activity$.subscribe($.proxy(this.onResponse, this));
-    },
-    // The implementation of the below methods would depend on the Bot framework of choice
-    // This example uses the Microsoft's Bot Framework API to demonstrate a possible implementation
-    postMessage: function (args) {
-      this.agent.postActivity(args)
-        .subscribe();
-    },
-    onResponse: function (response) {
-      if (response.from.id === this.chat.getUser().id) {
-        return;
-      }
-
-      response.from.iconUrl = this.iconUrl;
-
-      this.renderMessage(response);
-      this.renderAttachments(response);
-      this.renderSuggestedActions(response.suggestedActions);
-    },
-    renderMessage: function (message) {
-      if (message.text || message.type == "typing") {
-        this.chat.renderMessage(message, message.from);
-      }
-    },
-    renderAttachments: function (data) {
-      this.chat.renderAttachments(data, data.from);
-    },
-    renderSuggestedActions: function (suggestedActions) {
-      var actions = [];
-
-      if (suggestedActions && suggestedActions.actions) {
-        actions = suggestedActions.actions;
-      }
-
-      this.chat.renderSuggestedActions(actions);
+  methods: {
+    onPost: function(args) {
+      const value = args.target.value
+      console.debug("onPost", value)
+      this.addMessage("User", value)
+      this.agent.postActivity({
+        from: { id: 'myUserId', name: 'myUserName' }, // required (from.name is optional)
+        type: 'message',
+        text: value,
+      }).subscribe(
+          id => {
+            args.target.value = null
+          },
+          error => console.log("Error posting activity", error)
+      );
     }
-  });
-  */
+  },
+  beforeMount: function() {
+    this.agent = new DirectLine({ secret: secret })
+    this.agent.activity$
+      .filter(activity => activity.type === 'message' && activity.from.id === 'yacabot')
+      .subscribe(
+          activity => {
+            this.addMessage("YACABot", activity.text)
+          }
+      )
+  },
+}
+
 </script>
