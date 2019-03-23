@@ -1,16 +1,15 @@
 
 
 <template>
-  <v-container>
     <v-card>
-      <v-app>
         <v-container grid-list-md text-xs-center>
           <div id="vueapp" class="vue-app">
             <template>
               <v-timeline>
                 <v-timeline-item
-                v-for="message in messages"
-                large
+                    :key="message"
+                    v-for="message in messages"
+                    large
                 >
                   <template v-slot:icon>
                   </template>
@@ -38,18 +37,8 @@
             </template>
           </div>
         </v-container>
-      </v-app>
     </v-card>
-  </v-container>
 </template>
-
-<script>
-export default {
-    data: () => {
-        return {}
-    },
-}
-</script>
 
 <script>
 
@@ -88,6 +77,7 @@ export default {
       }).subscribe(
           id => {
             args.target.value = null
+            console.debug("Activity posted", id)
           },
           error => console.log("Error posting activity", error)
       );

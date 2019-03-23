@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
-    <v-layout row>
-      <v-flex xs6>
+    <v-layout row class="firstrow" px2>
+      <v-flex xs6 mr2>
         <PedroPersona>
         </PedroPersona>
       </v-flex>
@@ -34,6 +34,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.firstrow {
+  height: 600px;
+}
 </style>
