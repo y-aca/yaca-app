@@ -9,11 +9,12 @@ import '@progress/kendo-theme-default/dist/all.css'
 
 import { Chat, ChatInstaller } from '@progress/kendo-chat-vue-wrapper'
 
+import App from './App.vue'
+
 Vue.use(ChatInstaller)
 //End chat import
 
 
-import { DirectLine } from 'botframework-directlinejs';
 
 Vue.config.productionTip = false
 

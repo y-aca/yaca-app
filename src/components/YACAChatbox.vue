@@ -31,7 +31,9 @@
 
 <script>
 
-secretKey = "lMy3tOEaOhM.nJa2Hu5KyEwsXiN2o9arp0GUrfPieAsWGzuSMKZUajk"
+import { DirectLine } from 'botframework-directlinejs';
+
+var secretKey = "lMy3tOEaOhM.nJa2Hu5KyEwsXiN2o9arp0GUrfPieAsWGzuSMKZUajk"
 var directLine = new DirectLine({
     secret: secretKey
 });
@@ -41,7 +43,6 @@ export default {
   data () {
     return {
       //
-      dynamicId: "dynamicId",
       post: onPost,
       sendMessage: onSendMessage,
       actionClick: onActionClick,
