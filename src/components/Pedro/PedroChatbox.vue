@@ -3,7 +3,7 @@
 <template>
 
   <v-card>
-    <v-layout column fill-height justify-end>
+    <v-layout column justify-end class="chatboxheight">
       <v-flex xs11 px-4 class="paysage">
         <v-timeline>
           <v-timeline-item
@@ -28,8 +28,25 @@
                     <v-flex
                       v-for="n in message.text"
                     >
-                      <v-card class="pa-3">
+                      <v-card v-if="message.type === 'text'" class="pa-3">
                         {{ n }}
+                      </v-card>
+                      <v-card v-if="message.type === 'slider'" class="pa-3">
+                        <v-slider
+                          :min="1"
+                          :max="10"
+                          v-model="ex3.val"
+                          :label="ex3.label"
+                          :thumb-color="ex3.color"
+                          thumb-label="always"
+                        ></v-slider>
+                      </v-card>
+                      <v-card v-if="message.type === 'rating'" class="pa-3">
+                        <v-rating
+                          v-model="rating"
+                          background-color="#009999 lighten-3"
+                          color="#009999"
+                        ></v-rating>
                       </v-card>
                     </v-flex>
                   </v-layout>
@@ -66,17 +83,24 @@ var secret = "lMy3tOEaOhM.nJa2Hu5KyEwsXiN2o9arp0GUrfPieAsWGzuSMKZUajk"
 export default {
   data () {
     return {
+      ex3: {
+        val: 6,
+        label: 'Ça va !',
+        color: '#eb1015',
+      },
+      rating: 3,
       publicPath: process.env.BASE_URL,
       agent: null,
       message: null,
       messages: [],
-      addMessage: function(author, text) {
+      addMessage: function(author, text, value=null) {
+        var type = 'text';
         var lastIndex = this.messages.length - 1;
         var lastMessage = this.messages[lastIndex];
         if(lastIndex >= 0 && lastMessage.author == author) {
             lastMessage.text.push(text);
         } else {
-            this.messages.push({author: author, text: [text]})
+            this.messages.push({author: author, text: [text], type: type})
         }
       }
     }
@@ -110,10 +134,7 @@ export default {
       .filter(activity => activity.type === 'message' && activity.from.id === 'yacabot')
       .subscribe(
           activity => {
-            this.addMessage("YACABot", activity.text)
-            if (activity.value && activity.value.action === "next") {
-              this.router.push('XXX')
-            }
+            this.addMessage("YACABot", activity.text, activity.value)
           }
       )
     this.agent.postActivity({
@@ -133,6 +154,10 @@ export default {
 
 .hauteur {
   height: 100%;
+}
+
+.chatboxheight {
+  height: 1028px;
 }
 
 .paysage::after {
