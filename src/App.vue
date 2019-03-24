@@ -1,9 +1,9 @@
 <template>
   <v-app>
     <v-layout row fill-height>
-      <v-flex xs1 pl-4 mr-1>
+      <v-flex xs1 pl-4 mr-1 ml-5>
         <v-layout justify-space-around column fill-height>
-          <v-flex xs2>
+          <v-flex xs2 class="mt-5">
             <v-avatar
               :size="100"
               color="grey lighten-4"

@@ -2,7 +2,7 @@
   <v-container grid-list-md fluid class="hauteur">
     <v-layout row fill-height>
       <v-flex xs9>
-        <v-layout column fill-height>
+        <v-layout column fill-height class='mt-1 mr-3'>
           <v-flex :class="isConnected ? 'xs3' : 'hide'">
             <PedroGraphs class="hauteur"></PedroGraphs>
           </v-flex>
