@@ -16,6 +16,7 @@ Vue.use(VueRouter)
 // 1. Define route components.
 // These can be imported from other files
 import Pedro from './views/Pedro.vue'
+import PedroConnected from './views/PedroConnected.vue'
 
 // 2. Define some routes
 // Each route should map to a component. The "component" can
@@ -25,6 +26,7 @@ import Pedro from './views/Pedro.vue'
 const routes = [
   { path: '*', redirect: '/' },
   { path: '/', component: Pedro },
+  { path: '/connected', component: PedroConnected },
 ]
 
 // 3. Create the router instance and pass the `routes` option

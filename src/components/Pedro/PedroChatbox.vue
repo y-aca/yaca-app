@@ -43,6 +43,7 @@
               required
               v-on:keyup.enter="onPost"
             ></v-text-field>
+            <v-btn flat @click="submit"><v-icon class="px-15">fa-paper-plane</v-icon></v-btn>
           </v-layout>
         </v-container>
       </v-flex>
@@ -92,6 +93,10 @@ export default {
           },
           error => console.log("Error posting activity", error)
       );
+    },
+
+    submit: function() {
+      this.$emit('connected')
     }
   },
   beforeMount: function() {

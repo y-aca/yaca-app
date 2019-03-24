@@ -2,10 +2,15 @@
   <v-container grid-list-md fluid class="hauteur">
     <v-layout row fill-height>
       <v-flex xs9>
-        <v-layout>
-          <PedroChatbox class="hauteur">
-          </PedroChatbox>
-        <v-layout>
+        <v-layout column fill-height>
+          <v-flex xs3>
+            <PedroGraphs class="hauteur"></PedroGraphs>
+          </v-flex>
+          <v-flex xs9>
+            <PedroChatbox class="hauteur">
+            </PedroChatbox>
+          </v-flex>
+        </v-layout>
       </v-flex>
       <v-flex xs3>
         <PedroPersona class="hauteur">
@@ -18,17 +23,20 @@
 <script>
 import PedroPersona from '../components/Pedro/PedroPersona.vue'
 import PedroChatbox from '../components/Pedro/PedroChatbox.vue'
-
+import PedroGraphs from '../components/Pedro/PedroGraphs.vue'
 export default {
     data: () => {
         return {}
     },
-    components: {PedroPersona, PedroChatbox}
+    components: {PedroPersona, PedroChatbox, PedroGraphs}
 }
 </script>
 
 <style scoped>
 .hauteur {
   height: 100%;
+}
+.mt-10 {
+  margin-top: 50px;
 }
 </style>
