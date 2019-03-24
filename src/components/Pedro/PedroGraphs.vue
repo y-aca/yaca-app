@@ -68,5 +68,6 @@ export default {
 .pd-3 {
     z-index: 10;
     padding-bottom: 15px;
+    background-color: #EEEEEE;
 }
 </style>
