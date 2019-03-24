@@ -1,6 +1,6 @@
 <template>
   <v-app class='font'>
-    <v-layout row fill-height>
+    <v-layout row fill-height class="toto">
       <v-flex xs1 pl-4 mr-1 ml-5>
         <v-layout justify-space-around column fill-height>
           <v-flex xs2 class="mt-5">
@@ -74,5 +74,8 @@ export default {
 body .font {
   font-family:  'Montserrat';
   font-size: 1.3em;
+}
+.toto {
+  background-color: #C3E6E5;
 }
 </style>

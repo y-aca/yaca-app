@@ -1,7 +1,7 @@
 <template>
-    <v-card class="hauteur">
+    <v-card class="hauteur pd-3">
         <v-layout row fill-height>
-        <v-flex xs8>
+        <v-flex xs7>
             <h2 class="text-md-center mt-1">Ta progression</h2>
             <v-sparkline class="hauteur"
             :value="value"
@@ -14,12 +14,12 @@
             auto-draw
             ></v-sparkline>
         </v-flex>
-        <v-flex xs4>
+        <v-flex xs5>
             <v-layout column fill-height align-center justify-center>
             <v-flex xs12>
-                <h2 class="text-md-center mt-1">Ton objectif</h2>
+                <h2 class="text-md-center mr-5 mt-1">Ton objectif</h2>
                 <v-progress-circular
-                class="mt-10"
+                class="mt-10 ml-5"
                 :value="80"
                 :size="100"
                 :width="15"
@@ -64,5 +64,9 @@ export default {
 }
 .mt-10 {
   margin-top: 50px;
+}
+.pd-3 {
+    z-index: 10;
+    padding-bottom: 15px;
 }
 </style>

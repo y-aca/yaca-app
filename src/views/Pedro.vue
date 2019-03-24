@@ -1,8 +1,8 @@
 <template>
-  <v-container grid-list-md fluid class="hauteur">
+  <v-container grid-list-md fluid class="hauteur chatboxheight">
     <v-layout row fill-height>
       <v-flex xs9>
-        <v-layout column fill-height class='mt-1 mr-3'>
+        <v-layout column class='mt-1 mr-3'>
           <v-flex :class="isConnected ? 'xs3' : 'hide'">
             <PedroGraphs class="hauteur"></PedroGraphs>
           </v-flex>
@@ -40,6 +40,9 @@ export default {
 </script>
 
 <style scoped>
+.chatboxheight {
+  height: 1028px;
+}
 .hauteur {
   height: 100%;
 }

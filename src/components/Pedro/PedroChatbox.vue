@@ -1,7 +1,4 @@
-
-
 <template>
-
   <v-card>
     <v-layout column justify-end class="chatboxheight">
       <v-flex xs11 px-4 class="paysage">
@@ -9,13 +6,9 @@
           <v-timeline-item
               :key="message"
               v-for="message in messages"
+              color="rgb(235, 16, 21, 0.5)"
+              fill-dot
           >
-
-          <template v-slot:icon>
-            <v-avatar>
-              <img :src="`${publicPath}couleur.png`" alt="avatar">
-            </v-avatar>
-          </template>
 
             <template v-slot:opposite>
               <span>{{ message.author }}</span>
@@ -32,6 +25,7 @@
                         {{ n }}
                       </v-card>
                       <v-card v-if="message.type === 'slider'" class="pa-3">
+                        {{ n }}
                         <v-slider
                           :min="1"
                           :max="10"
@@ -42,6 +36,7 @@
                         ></v-slider>
                       </v-card>
                       <v-card v-if="message.type === 'rating'" class="pa-3">
+                        {{ n }}
                         <v-rating
                           v-model="rating"
                           background-color="#009999 lighten-3"
@@ -65,7 +60,7 @@
               required
               v-on:keyup.enter="onPost"
             ></v-text-field>
-            <v-btn flat @click="submit"><v-icon class="px-15">fa-paper-plane</v-icon></v-btn>
+            <v-btn flat @click="submit"><v-icon class="px-15" color="rgb(235, 16, 21, 0.5)">fa-paper-plane</v-icon></v-btn>
           </v-layout>
         </v-container>
       </v-flex>
@@ -94,7 +89,12 @@ export default {
       message: null,
       messages: [],
       addMessage: function(author, text, value=null) {
+        if (text === '.')
+          return
         var type = 'text';
+        if (value && value.type) {
+          type = value.type;
+        }
         var lastIndex = this.messages.length - 1;
         var lastMessage = this.messages[lastIndex];
         if(lastIndex >= 0 && lastMessage.author == author) {
@@ -134,7 +134,7 @@ export default {
       .filter(activity => activity.type === 'message' && activity.from.id === 'yacabot')
       .subscribe(
           activity => {
-            this.addMessage("YACABot", activity.text, activity.value)
+            this.addMessage("Myros", activity.text, activity.value)
           }
       )
     this.agent.postActivity({
