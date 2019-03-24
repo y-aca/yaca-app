@@ -1,15 +1,15 @@
 <template>
-    <v-card>
+    <v-card class="pa-2">
         <v-img
             :src="`${publicPath}PEDRO_FULL.png`"
             aspect-ratio="0.3"
             max-height="500px"
+            class="roundimage"
         ></v-img>
 
         <v-card-title primary-title>
-            <div>
+            <div class="pedro">
                 <h3 class="headline mb-0">Pedro</h3>
-                <div>Ma spécialité ? Les sandwichs au jambon !</div>
             </div>
         </v-card-title>
     </v-card>
@@ -27,4 +27,13 @@ export default {
 
 <style>
 
+    .pedro {
+        align: center;
+    }
+    .pedro>h3 {
+        font-family: 'Luckiest Guy' !important;
+    }
+    .roundimage {
+        border-radius: 5px;
+    }
 </style>

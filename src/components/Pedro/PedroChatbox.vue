@@ -30,8 +30,7 @@
               required
               v-on:keyup.enter="onPost"
             ></v-text-field>
-            <v-btn @click="all">All</v-btn>
-            <v-btn @click="none">None</v-btn>
+            <v-icon class="px-15">fa-paper-plane</v-icon>
           </v-layout>
         </v-container>
       </v-flex>
@@ -103,6 +102,9 @@ export default {
       .subscribe(
           activity => {
             this.addMessage("YACABot", activity.text)
+            if (activity.value && activity.value.action === "next") {
+              this.router.push('XXX')
+            }
           }
       )
   },
@@ -131,5 +133,9 @@ export default {
   right: 0;
   position: absolute;
   z-index: 0;
+}
+
+.px-15 {
+  padding: 15px;
 }
 </style>
