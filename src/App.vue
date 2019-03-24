@@ -16,7 +16,7 @@
               :size="100"
               color="grey lighten-4"
             >
-              <img :src="`${publicPath}JESSY.png`" alt="avatar">
+              <img :src="`${publicPath}JESSY.png`" alt="avatar" class="fff">
             </v-avatar>
           </v-flex>
           <v-flex xs2>
@@ -24,7 +24,7 @@
               :size="100"
               color="grey lighten-4"
             >
-              <img :src="`${publicPath}MITSU.png`" alt="avatar">
+              <img :src="`${publicPath}MITSU.png`" alt="avatar" class="fff">
             </v-avatar>
           </v-flex>
           <v-flex xs2>
@@ -40,7 +40,7 @@
               :size="100"
               color="grey lighten-4"
             >
-              <img :src="`${publicPath}PACITO.png`" alt="avatar">
+              <img :src="`${publicPath}PACITO.png`" alt="avatar" class="fff">
             </v-avatar>
           </v-flex>
         </v-layout>
@@ -77,5 +77,8 @@ body .font {
 }
 .toto {
   background-color: #C3E6E5;
+}
+.fff {
+  opacity: 0.5;
 }
 </style>
