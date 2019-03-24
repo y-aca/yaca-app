@@ -1,42 +1,60 @@
 
 
 <template>
-  <v-card>
-    <v-layout column fill-height justify-end>
-      <v-flex xs11 px-4 class="paysage">
-        <v-timeline>
-          <v-timeline-item
-              :key="message"
-              v-for="message in messages"
-              large
-          >
-            <template v-slot:icon>
-            </template>
-            <template v-slot:opposite>
-              <span>{{ message.author }}</span>
-            </template>
-            <v-card class="elevation-2">
-              <v-card-text>{{ message.text }}</v-card-text>
-            </v-card>
-          </v-timeline-item>
-        </v-timeline>
-      </v-flex>
-      <v-flex xs1>
-        <v-container>
-          <v-layout>
-            <v-text-field
-              v-model="message"
-              label="Your message"
-              required
-              v-on:keyup.enter="onPost"
-            ></v-text-field>
-            <v-btn @click="all">All</v-btn>
-            <v-btn @click="none">None</v-btn>
-          </v-layout>
-        </v-container>
-      </v-flex>
-    </v-layout>
-  </v-card>
+    <v-card>
+        <v-layout column fill-height justify-end>
+          <v-flex xs11>
+            <v-timeline>
+              <v-timeline-item
+                  :key="message"
+                  v-for="message in messages"
+              >
+
+                <template v-slot:icon>
+                  <v-avatar>
+                    <img :src="`${publicPath}couleur.png`" alt="avatar">
+                  </v-avatar>
+                </template>
+
+
+
+                <template v-slot:opposite>
+                  <span>{{ message.author }}</span>
+                </template>
+
+
+                <div>
+                  <v-container>
+                    <v-layout column>
+                      <v-flex
+                        v-for="n in message.text"
+                      >
+                        <v-card class="pa-3">
+                          {{ n }}
+                        </v-card>
+                      </v-flex>
+                    </v-layout>
+                  </v-container>
+                </div>
+
+
+              </v-timeline-item>
+            </v-timeline>
+          </v-flex>
+          <v-flex xs1>
+            <v-container>
+              <v-layout>
+                <v-text-field
+                  v-model="message"
+                  label="Your message"
+                  required
+                  v-on:keyup.enter="onPost"
+                ></v-text-field>
+              </v-layout>
+            </v-container>
+          </v-flex>
+      </v-layout>
+    </v-card>
 </template>
 
 <script>
@@ -49,9 +67,6 @@ var secret = "lMy3tOEaOhM.nJa2Hu5KyEwsXiN2o9arp0GUrfPieAsWGzuSMKZUajk"
 export default {
   data () {
     return {
-      panel: [],
-      items: 1,
-
       publicPath: process.env.BASE_URL,
       agent: null,
       message: null,
@@ -60,29 +75,19 @@ export default {
         var lastIndex = this.messages.length - 1;
         var lastMessage = this.messages[lastIndex];
         if(lastIndex >= 0 && lastMessage.author == author) {
-            lastMessage.text += " " + text;
+            lastMessage.text.push(text);
         } else {
-            this.messages.push({author: author, text: text})
+            this.messages.push({author: author, text: [text]})
         }
       }
     }
   },
 
   methods: {
-    all () {
-      this.panel = [...Array(this.items).keys()].map(() => true)
-      console.debug('all', this.panel)
-    },
-    // Reset the panel
-    none () {
-      this.panel = []
-      console.debug('none', this.panel)
-    },
-
     onPost: function(args) {
       const value = args.target.value
       console.debug("onPost", value)
-      this.addMessage("User", value)
+      this.addMessage("", value)
       this.agent.postActivity({
         from: { id: 'myUserId', name: 'myUserName' }, // required (from.name is optional)
         type: 'message',
@@ -119,17 +124,4 @@ export default {
   height: 100%;
 }
 
-.paysage::after {
-  content: "";
-  background-image: url("http://localhost:8080/PAYSAGE.png");
-  background-position: 52% 50%;
-  background-size: cover;
-  opacity: 0.1;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: 0;
-}
 </style>
