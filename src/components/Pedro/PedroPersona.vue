@@ -1,7 +1,7 @@
 <template>
     <v-card>
         <v-img
-            :src="`${publicPath}PACITO.png`"
+            :src="`${publicPath}PEDRO_FULL.png`"
             aspect-ratio="0.3"
             max-height="500px"
         ></v-img>

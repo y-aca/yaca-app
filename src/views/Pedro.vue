@@ -1,22 +1,13 @@
 <template>
-  <v-container grid-list-md fluid>
-    <v-layout column fill-height>
-      <v-flex xs8>
-        <v-layout row class="firstrow" px2>
-          <v-flex xs6 mr2>
-            <PedroPersona class="hauteur">
-            </PedroPersona>
-          </v-flex>
-          <v-flex xs6>
-            <PedroChatbox class="hauteur">
-            </PedroChatbox>
-          </v-flex>
-        </v-layout>
+  <v-container grid-list-md fluid class="hauteur">
+    <v-layout row fill-height>
+      <v-flex xs9>
+        <PedroChatbox class="hauteur">
+        </PedroChatbox>
       </v-flex>
-      <v-flex xs4>
-          <v-card class="hauteur">
-            XXXSSS
-          </v-card>
+      <v-flex xs3>
+        <PedroPersona class="hauteur">
+        </PedroPersona>
       </v-flex>
     </v-layout>
   </v-container>
