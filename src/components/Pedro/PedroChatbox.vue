@@ -6,6 +6,10 @@
     <v-layout column fill-height justify-end>
       <v-flex xs11 px-4 class="paysage">
         <v-timeline>
+          <v-timeline-item
+              :key="message"
+              v-for="message in messages"
+          >
 
           <template v-slot:icon>
             <v-avatar>
@@ -17,20 +21,21 @@
               <span>{{ message.author }}</span>
             </template>
 
-            <div>
-              <v-container>
-                <v-layout column>
-                  <v-flex
-                    v-for="n in message.text"
-                  >
-                    <v-card class="pa-3">
-                      {{ n }}
-                    </v-card>
-                  </v-flex>
-                </v-layout>
-              </v-container>
-            </div>
-
+            <template v-slot>
+              <div>
+                <v-container>
+                  <v-layout column>
+                    <v-flex
+                      v-for="n in message.text"
+                    >
+                      <v-card class="pa-3">
+                        {{ n }}
+                      </v-card>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </div>
+            </template>
           </v-timeline-item>
         </v-timeline>
       </v-flex>
@@ -111,6 +116,11 @@ export default {
             }
           }
       )
+    this.agent.postActivity({
+      from: { id: 'myUserId', name: 'myUserName' }, // required (from.name is optional)
+      type: 'message',
+      text: "start",
+    })
   },
 }
 
