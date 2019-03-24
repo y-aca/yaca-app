@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class='font'>
     <v-layout row fill-height>
       <v-flex xs1 pl-4 mr-1 ml-5>
         <v-layout justify-space-around column fill-height>
@@ -71,4 +71,8 @@ export default {
 </script>
 
 <style>
+body .font {
+  font-family:  'Montserrat';
+  font-size: 1.3em;
+}
 </style>

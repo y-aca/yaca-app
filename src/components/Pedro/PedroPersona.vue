@@ -9,7 +9,7 @@
 
         <v-card-title primary-title>
             <div class="pedro">
-                <h3 class="headline mb-0">Pedro</h3>
+                <h3 class="headline mb-0">Myros</h3>
             </div>
         </v-card-title>
     </v-card>
