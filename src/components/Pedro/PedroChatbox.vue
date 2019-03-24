@@ -6,11 +6,6 @@
     <v-layout column fill-height justify-end>
       <v-flex xs11 px-4 class="paysage">
         <v-timeline>
-          <v-timeline-item
-              :key="message"
-              v-for="message in messages"
-              large
-          >
 
           <template v-slot:icon>
             <v-avatar>
