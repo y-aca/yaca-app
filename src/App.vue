@@ -8,6 +8,14 @@
               :size="100"
               color="grey lighten-4"
             >
+              <img :src="`${publicPath}logo.png`" alt="avatar">
+            </v-avatar>
+          </v-flex>
+          <v-flex xs2>
+            <v-avatar
+              :size="100"
+              color="grey lighten-4"
+            >
               <img :src="`${publicPath}JESSY.png`" alt="avatar">
             </v-avatar>
           </v-flex>
@@ -64,4 +72,3 @@ export default {
 
 <style>
 </style>
-
